@@ -1,44 +1,46 @@
 package com.Mindtree.PlanMyTripServer.Service.Impl;
 
 import com.Mindtree.PlanMyTripServer.Model.MemberEntity;
-import com.Mindtree.PlanMyTripServer.Model.OrderEntity;
+import com.Mindtree.PlanMyTripServer.Model.TypeEntity;
 import com.Mindtree.PlanMyTripServer.Repository.MemberRepository;
-import com.Mindtree.PlanMyTripServer.Repository.OrderRepository;
+import com.Mindtree.PlanMyTripServer.Repository.TypeRepository;
 import com.Mindtree.PlanMyTripServer.Service.MemberService;
-import com.Mindtree.PlanMyTripServer.Service.OrderService;
+import com.Mindtree.PlanMyTripServer.Service.TypeService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
-
-public class MemberServiceImpl implements MemberService {
+@Component
+public class TypeServiceImpl implements TypeService {
 
     @Autowired
-    private MemberRepository memberRepository;
+    private TypeRepository typeRepository;
+
 
     @Override
-    public MemberEntity createMember(MemberEntity member) {
-        return this.memberRepository.save(member);
-
+    public TypeEntity createType(TypeEntity type) {
+        return this.typeRepository.save(type);
     }
 
     @Override
-    public MemberEntity updateMember(MemberEntity updatemember) {
-        return this.memberRepository.save(updatemember);
+    public TypeEntity updateType(TypeEntity updatetype) {
+        return this.typeRepository.save(updatetype);
     }
 
     @Override
-    public MemberEntity getMember(long mid) {
-        return this.memberRepository.findById(mid).get();
+    public TypeEntity getType(long tid) {
+        return this.typeRepository.findById(tid).get();
     }
 
     @Override
-    public List<MemberEntity> getMembers() {
-        return this.memberRepository.findAll();
+    public List<TypeEntity> getTypes() {
+        System.out.println("impl");
+        return this.typeRepository.findAll();
     }
 
     @Override
-    public void deleteMember(long mid) {
-        this.memberRepository.deleteById(mid);
+    public void deleteType(long tid) {
+      this.typeRepository.deleteById(tid);
 
     }
 }

@@ -9,7 +9,7 @@ import java.util.Set;
 
 public interface PackageeService {
     public PackageeEntity createPackagee(PackageeEntity packagee);
-    public PackageeEntity updatePackagee(PackageeEntity packagee);
+    public PackageeEntity updatePackagee(PackageeEntity updatepackagee);
     PackageeEntity getPackagee(long pid);
     public List<PackageeEntity> getPackagees();
     public void deletePackagee(long pid);

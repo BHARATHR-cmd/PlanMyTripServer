@@ -1,47 +1,47 @@
 package com.Mindtree.PlanMyTripServer.Controller;
 
 
-import com.Mindtree.PlanMyTripServer.Model.PackageeEntity;
-import com.Mindtree.PlanMyTripServer.Service.PackageeService;
+import com.Mindtree.PlanMyTripServer.Model.MemberEntity;
+import com.Mindtree.PlanMyTripServer.Service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/package")
+@RequestMapping("/member")
 @CrossOrigin("*")
 
-public class PackageController {
+public class MemberController {
 
     @Autowired
-    private PackageeService packageeService;
+    private MemberService memberService;
 
     @PostMapping("/")
-    public PackageeEntity createpackagee(@RequestBody PackageeEntity packagee){
+    public MemberEntity createmember(@RequestBody MemberEntity member){
 
-        return this.packageeService.createPackagee(packagee);
+        return this.memberService.createMember(member);
 
     }
-    @GetMapping("/{pid}")
-    public PackageeEntity getPackagee(@PathVariable Long pid){
-        return this.packageeService.getPackagee(pid);
+    @GetMapping("/{mid}")
+    public MemberEntity getMember(@PathVariable Long mid){
+        return this.memberService.getMember(mid);
     }
     @GetMapping("/")
-    public List<PackageeEntity> getPackages(){
-        return this.packageeService.getPackagees();
+    public List<MemberEntity> getPackages(){
+        return this.memberService.getMembers();
     }
 
     @PutMapping("/")
-    public PackageeEntity updatePackagee(@RequestBody PackageeEntity updatedpackagee){
+    public MemberEntity updateMember(@RequestBody MemberEntity updatedmember){
 
-        return this.packageeService.updatePackagee(updatedpackagee);
+        return this.memberService.updateMember(updatedmember);
 
     }
 
-    @DeleteMapping("/{pid}")
-    public void  deletePackagee(@PathVariable Long pid){
-        this.packageeService.deletePackagee(pid);
+    @DeleteMapping("/{mid}")
+    public void  deleteMember(@PathVariable Long mid){
+        this.memberService.deleteMember(mid);
     }
 
 }

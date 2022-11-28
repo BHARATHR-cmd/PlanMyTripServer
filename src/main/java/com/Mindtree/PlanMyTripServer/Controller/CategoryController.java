@@ -33,13 +33,10 @@ public class CategoryController {
         return this.categoryService.getCategories();
     }
 
-    @PutMapping("/{cid}")
-    public CategoryEntity updateCategory(@RequestBody CategoryEntity updatedcategory,@PathVariable Long cid){
-        CategoryEntity category=this.categoryService.getCategory(cid);
-        category.setCtitle(updatedcategory.getCtitle());
-        category.setCDescription(updatedcategory.getCDescription());
-        category.setCImage(updatedcategory.getCImage());
-        return this.categoryService.updateCategory(category);
+    @PutMapping("/")
+    public CategoryEntity updateCategory(@RequestBody CategoryEntity updatedcategory){
+
+        return this.categoryService.updateCategory(updatedcategory);
 
     }
 

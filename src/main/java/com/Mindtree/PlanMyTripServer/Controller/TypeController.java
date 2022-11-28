@@ -1,47 +1,48 @@
 package com.Mindtree.PlanMyTripServer.Controller;
 
 
-import com.Mindtree.PlanMyTripServer.Model.PackageeEntity;
-import com.Mindtree.PlanMyTripServer.Service.PackageeService;
+import com.Mindtree.PlanMyTripServer.Model.TypeEntity;
+import com.Mindtree.PlanMyTripServer.Service.TypeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/package")
+@RequestMapping("/type")
 @CrossOrigin("*")
 
-public class PackageController {
+public class TypeController {
 
     @Autowired
-    private PackageeService packageeService;
+    private TypeService typeService;
 
     @PostMapping("/")
-    public PackageeEntity createpackagee(@RequestBody PackageeEntity packagee){
+    public TypeEntity createtype(@RequestBody TypeEntity type){
 
-        return this.packageeService.createPackagee(packagee);
+        return this.typeService.createType(type);
 
     }
-    @GetMapping("/{pid}")
-    public PackageeEntity getPackagee(@PathVariable Long pid){
-        return this.packageeService.getPackagee(pid);
+    @GetMapping("/{tid}")
+    public TypeEntity getType(@PathVariable Long tid){
+        return this.typeService.getType(tid);
     }
     @GetMapping("/")
-    public List<PackageeEntity> getPackages(){
-        return this.packageeService.getPackagees();
+    public List<TypeEntity> getPackages(){
+        System.out.println("controller");
+        return this.typeService.getTypes();
     }
 
     @PutMapping("/")
-    public PackageeEntity updatePackagee(@RequestBody PackageeEntity updatedpackagee){
+    public TypeEntity updateType(@RequestBody TypeEntity updatedtype){
 
-        return this.packageeService.updatePackagee(updatedpackagee);
+        return this.typeService.updateType(updatedtype);
 
     }
 
-    @DeleteMapping("/{pid}")
-    public void  deletePackagee(@PathVariable Long pid){
-        this.packageeService.deletePackagee(pid);
+    @DeleteMapping("/{tid}")
+    public void  deleteType(@PathVariable Long tid){
+        this.typeService.deleteType(tid);
     }
 
 }

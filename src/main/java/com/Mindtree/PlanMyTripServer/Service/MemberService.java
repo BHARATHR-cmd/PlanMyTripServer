@@ -1,13 +1,14 @@
 package com.Mindtree.PlanMyTripServer.Service;
 
-import com.Mindtree.PlanMyTripServer.Model.OrderEntity;
+import com.Mindtree.PlanMyTripServer.Model.MemberEntity;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
-
-public interface OrderService {
-    public OrderEntity createOrder(OrderEntity order);
-    public OrderEntity updateOrder(OrderEntity updateorder);
-    OrderEntity getOrder(long pid);
-    public List<OrderEntity> getOrders();
-    public void deleteOrder(long pid);
+@Service
+public interface MemberService {
+    public MemberEntity createMember(MemberEntity member);
+    public MemberEntity updateMember(MemberEntity updatemember);
+    MemberEntity getMember(long mid);
+    public List<MemberEntity> getMembers();
+    public void deleteMember(long mid);
 }

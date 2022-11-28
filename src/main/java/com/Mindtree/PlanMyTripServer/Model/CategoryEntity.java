@@ -14,12 +14,13 @@ public class CategoryEntity {
     private Long cid;
 
     private String Ctitle;
-
+    @Column (columnDefinition = "TEXT")
+// @
     private  String CDescription;
 
     private String CImage;
 
-    @OneToMany(mappedBy = "category",fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "category",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     @JsonIgnore
     private Set<PackageeEntity> packages = new LinkedHashSet<>();
 

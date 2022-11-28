@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Set;
 
 @RestController
 @RequestMapping("/package")
@@ -33,13 +32,10 @@ public class PackageController {
         return this.packageeService.getPackagees();
     }
 
-    @PutMapping("/{pid}")
-    public PackageeEntity updatePackagee(@RequestBody PackageeEntity updatedpackagee,@PathVariable Long cid){
-        PackageeEntity packagee=this.packageeService.getPackagee(cid);
-        packagee.setPtilte(updatedpackagee.getPtilte());
-        packagee.setPdescription(updatedpackagee.getPdescription());
-        packagee.setPimage(updatedpackagee.getPimage());
-        return this.packageeService.updatePackagee(packagee);
+    @PutMapping("/")
+    public PackageeEntity updatePackagee(@RequestBody PackageeEntity updatedpackagee){
+
+        return this.packageeService.updatePackagee(updatedpackagee);
 
     }
 

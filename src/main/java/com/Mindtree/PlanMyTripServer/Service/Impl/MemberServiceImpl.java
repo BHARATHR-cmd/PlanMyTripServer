@@ -1,39 +1,45 @@
 package com.Mindtree.PlanMyTripServer.Service.Impl;
 
+import com.Mindtree.PlanMyTripServer.Model.MemberEntity;
 import com.Mindtree.PlanMyTripServer.Model.OrderEntity;
+import com.Mindtree.PlanMyTripServer.Repository.MemberRepository;
 import com.Mindtree.PlanMyTripServer.Repository.OrderRepository;
+import com.Mindtree.PlanMyTripServer.Service.MemberService;
 import com.Mindtree.PlanMyTripServer.Service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
-
-public class OrderServiceImpl implements OrderService {
+@Component
+public class MemberServiceImpl implements MemberService {
 
     @Autowired
-    private OrderRepository orderRepository;
+    private MemberRepository memberRepository;
 
     @Override
-    public OrderEntity createOrder(OrderEntity order) {
-        return this.orderRepository.save(order);
+    public MemberEntity createMember(MemberEntity member) {
+        return this.memberRepository.save(member);
+
     }
 
     @Override
-    public OrderEntity updateOrder(OrderEntity updateorder) {
-        return this.orderRepository.save(updateorder);
+    public MemberEntity updateMember(MemberEntity updatemember) {
+        return this.memberRepository.save(updatemember);
     }
 
     @Override
-    public OrderEntity getOrder(long oid) {
-        return this.orderRepository.findById(oid).get();
+    public MemberEntity getMember(long mid) {
+        return this.memberRepository.findById(mid).get();
     }
 
     @Override
-    public List<OrderEntity> getOrders() {
-        return this.orderRepository.findAll();
+    public List<MemberEntity> getMembers() {
+        return this.memberRepository.findAll();
     }
 
     @Override
-    public void deleteOrder(long oid) {
-        this.orderRepository.deleteById(oid);
+    public void deleteMember(long mid) {
+        this.memberRepository.deleteById(mid);
+
     }
 }

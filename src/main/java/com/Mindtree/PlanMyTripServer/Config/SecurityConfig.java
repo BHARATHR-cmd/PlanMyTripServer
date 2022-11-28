@@ -53,8 +53,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .cors()
                 .disable()
                 .authorizeRequests()
-                .antMatchers("/token-generation","/current-user","/user/","/category","/package").permitAll()
-                        .anyRequest().authenticated()
+                .antMatchers("/token-generation","/current-user","/user/","/category/","/category/{cid}","/package/{pid}","/package/","/order","/order/","/order/{oid}","/type","/type/","/type/{tid}","/member","/member/","/member/{mid}","/upload","/upload/","/upload/{fileId}").permitAll()
+                .anyRequest().authenticated()
                         .and()
                                 .exceptionHandling().authenticationEntryPoint(unauthorizedHandler)
                         .and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);

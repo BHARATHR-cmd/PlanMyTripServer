@@ -24,9 +24,9 @@ public class PackageServiceImpl implements PackageeService {
     }
 
     @Override
-    public PackageeEntity updatePackagee(PackageeEntity packagee) {
+    public PackageeEntity updatePackagee(PackageeEntity updatedpackagee) {
 
-        return null;
+        return this.packageeRepository.save(updatedpackagee);
     }
 
     public PackageeEntity getPackagee(long pid) {
@@ -43,6 +43,7 @@ public class PackageServiceImpl implements PackageeService {
     @Override
     public void deletePackagee(long pid) {
         this.packageeRepository.deleteById(pid);
+        System.out.println("Package Deleted******************** ");
 
     }
 }

@@ -10,19 +10,31 @@ public class PackageeEntity {
     private Long pid;
 
     private String Ptilte;
-
+    @Column (columnDefinition = "TEXT")
     private String Pdescription;
 
     private String Pimage;
 
-    @ManyToOne
-    @JoinColumn(name = "category_cid")
+    @ManyToOne(fetch = FetchType.EAGER )
     private CategoryEntity category;
+
+    private double pprice;
+
+    public double getPprice() {
+        return pprice;
+    }
+
+    public void setPprice(double pprice) {
+        this.pprice = pprice;
+    }
 
     public CategoryEntity getCategory() {
         return category;
     }
 
+    public void setCategory(CategoryEntity category) {
+        this.category = category;
+    }
 
     public Long getPid() {
         return pid;
@@ -59,10 +71,12 @@ public class PackageeEntity {
     public PackageeEntity() {
     }
 
-    public PackageeEntity(Long pid, String ptilte, String pdescription, String pimage) {
+    public PackageeEntity(Long pid, String ptilte, String pdescription, String pimage, CategoryEntity category, double pprice) {
         this.pid = pid;
         Ptilte = ptilte;
         Pdescription = pdescription;
         Pimage = pimage;
+        this.category = category;
+        this.pprice = pprice;
     }
 }

@@ -8,6 +8,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import javax.persistence.*;
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -24,10 +25,20 @@ public class UserEntity implements UserDetails {
     private String password;
     private String username;
     private boolean enabled=true;
-    private String profilepic;
+    private String profilepic="default.jpeg";
     private String role="NORMAL";
 
+    @OneToMany(mappedBy = "user",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+    @JsonIgnore
+    private List<OrderEntity> orders;
 
+    public List<OrderEntity> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(List<OrderEntity> orders) {
+        this.orders = orders;
+    }
 
     @Override
     public boolean isAccountNonExpired() {
@@ -45,7 +56,7 @@ public class UserEntity implements UserDetails {
     }
 
 
-    public UserEntity(Long userid, String name, String emailId, String phone, String password, String username, boolean enabled, String profilepic, String role) {
+    public UserEntity(Long userid, String name, String emailId, String phone, String password, String username, boolean enabled, String profilepic, String role, List<OrderEntity> orders) {
         this.userid = userid;
         this.name = name;
         this.emailId = emailId;
@@ -55,6 +66,7 @@ public class UserEntity implements UserDetails {
         this.enabled = enabled;
         this.profilepic = profilepic;
         this.role = role;
+        this.orders = orders;
     }
 
     public UserEntity() {

@@ -42,21 +42,15 @@ public class UserController {
         this.userService.deleteUser(userid);
     }
 
-    @PutMapping("/{userid}")
-    public UserEntity updateUser(@RequestBody UserEntity newUserEntity,@PathVariable Long userid) throws Exception {
-        UserEntity userEntity=this.userRepository.findById(userid).get();
-        if(this.userService.getUser(newUserEntity.getUsername())!=null){
-            userEntity.setName(newUserEntity.getName());
-            userEntity.setPhone(newUserEntity.getPhone());
-            userEntity.setProfilepic(newUserEntity.getProfilepic());
-            userEntity.setEmailId(newUserEntity.getEmailId());
-            userEntity.setPassword(newUserEntity.getPassword());
-            return userRepository.save(userEntity);
-        }
-        else {
-            System.out.println("User Does Not Exits!!!");
-            throw new Exception("User Does Not Exits!!!");
-        }
+    @PutMapping("/")
+    public UserEntity updateUser(@RequestBody UserEntity updatedUserEntity) throws Exception {
+
+
+//            updatedUserEntity.setPassword(this.bCryptPasswordEncoder.encode(updatedUserEntity.getPassword()));
+
+            return this.userService.updateUser(updatedUserEntity);
+
+
 
 
     }
